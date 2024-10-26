@@ -1,0 +1,15 @@
+.upay-header {
+    background-color: #000;
+    padding-left: 1rem;
+    top: 0;
+    height: 2.6rem;
+    line-height: 2.6rem;
+    width: 100%;
+    color: #fff;
+}
+
+.icon {
+    width: 1.2rem;
+    height: 1.2rem;
+    margin-right: 0.5rem;
+}

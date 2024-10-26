@@ -1,0 +1,157 @@
+.upay-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.upay-container {
+    max-width: 820px;
+    width: 100%;
+}
+
+.upay-body {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.8rem;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.large {
+    font-size: 1.2rem;
+}
+
+.price {
+    font-size: 1.2rem;
+    color: #ffb700;
+}
+
+.upay-info-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem;
+}
+
+.right {
+    float: right;
+}
+
+.margin {
+    margin: 1rem;
+}
+
+.margin-top {
+    margin-top: 1rem;
+}
+
+.text-gray {
+    color: #666;
+}
+
+.upay-info-item-label {
+    font-size: 0.8rem;
+    color: #666;
+}
+
+.upay-body-right {
+    min-width: 400px;
+    max-width: 400px;
+    padding: 0.8rem
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.flex {
+    display: flex;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.justify-between {
+    justify-content: space-between;
+}
+
+.upay-body-left {
+    min-width: 400px;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; */
+    border-right: 1px solid #e0e0e0;
+    padding: 0.8rem;
+}
+
+.word-break {
+    word-break: break-all;
+}
+
+.text-sm {
+    font-size: 0.8rem;
+}
+
+.upay-qrcode-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.margin-top-lg {
+    margin-top: 2rem;
+}
+
+.upay-qrcode-cover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center ;
+    flex-direction: column;
+    gap: 1rem;
+    color: #000;
+}
+
+.upay-qrcode-icon>img {
+    height: 3rem;
+    width: 3rem;
+}
+.margin-top-sm {
+    margin-top: 0.5rem;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-grey {
+    color: #666;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.margin-left {
+    margin-left: 1rem;
+}
+
+.margin-right {
+    margin-right: 1rem;
+}
