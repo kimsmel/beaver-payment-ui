@@ -4,10 +4,10 @@ API=http://localhost:8080/api/v1/order
 
 now=$(date +"%s")
 nowInMs=$(($now * 1000))
-expireAt=$((($now + 3600) * 1000))
+expireAt=$((($now + 86400) * 1000))
 nonce=$(date +"%s%S")
 
-uid=3
+uid=1
 oid=$1
 amount=1
 memo=test-memo-1

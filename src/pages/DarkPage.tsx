@@ -1,12 +1,10 @@
 import React from "react";
 
-import "./HomePage.css";
+import "./DarkPage.css";
 import { Alert, Button, Form } from "react-bootstrap";
 
-import IconCopy from "../assets/icons/copy.svg";
+import IconCopy from "../assets/icons/copy-white.svg";
 import { QRCodeCanvas } from "qrcode.react";
-import Header from "../components/Header/Header";
-import Footer from "../components/Footer/Footer";
 import Loading from "../components/Loading/Loading";
 import SuccessIcon from "../assets/icons/success.svg";
 import WarningIcon from "../assets/icons/warning.svg";
@@ -17,11 +15,11 @@ import copy from "copy-to-clipboard";
 import toast, { Toaster } from 'react-hot-toast';
 
 
-interface HomePageProps {
+interface DarkPageProps {
     id: string;
 }
 
-interface HomePageState {
+interface DarkPageState {
     countdown: number;
     timeRemains: string;
     warning: string;
@@ -52,8 +50,8 @@ interface CustomWindow extends Window {
 
 declare let window: CustomWindow;
 
-class HomePage extends React.Component<HomePageProps, HomePageState> {
-    constructor(props: HomePageProps) {
+class DarkPage extends React.Component<DarkPageProps, DarkPageState> {
+    constructor(props: DarkPageProps) {
         super(props);
         this.state = {
             countdown: 3599, // in seconds
@@ -420,7 +418,6 @@ class HomePage extends React.Component<HomePageProps, HomePageState> {
     render() {
         return (
             <div className="upay-page" >
-                <Header />
                 {this.state.warning && !this.state.success ? <div className="upay-container  margin">
                     <Alert variant="warning flex align-center">
                         <img src={WarningIcon} alt="warning" className="icon" />
@@ -439,46 +436,57 @@ class HomePage extends React.Component<HomePageProps, HomePageState> {
                             onClick={() => {
                                 if (window.flutter_inappwebview) {
                                     window.flutter_inappwebview.callHandler('popPage', true)
-                                        .then(function(result) {
+                                        .then(function (result) {
                                             console.log("Page closed");
                                         });
                                 }
                             }}
-                        >click to close</Alert.Link></span> : null}   
+                        >click to close</Alert.Link></span> : null}
                     </Alert>
                 </div> : null}
                 <div className="upay-container">
                     <div className="upay-body">
 
                         <div className="upay-body-left">
+                            <div className="main-price text-center" style={{
+                                lineHeight: 1,
+                                marginTop: '1rem'
+                            }}>
+                                {
+                                    this.state.order ? this.state.order.amount : 'Loading...'
+                                } USDT
+                            </div>
+                            <div className="count-down-text text-center">
+                                {this.state.timeRemains}
+                            </div>
+                            <div style={{
+                                height: '1rem'
+                            }}></div>
                             <div>
-                                <div className="upay-info-item">
-                                    <div className="upay-info-item-label">ID</div>
-                                    <div className="upay-info-item-text"># {
+                                <div className="upay-info-item flex justify-between">
+                                    <div>ID</div>
+                                    <div># {
                                         this.state.order ? this.state.order.id : 'Loading...'
                                     }</div>
                                 </div>
-                                <div className="upay-info-item">
-                                    <div className="upay-info-item-label">Order ID</div>
-                                    <div className="upay-info-item-text large"># {
+                                <div className="upay-info-item flex justify-between">
+                                    <div>Order ID</div>
+                                    <div># {
                                         this.state.order ? this.state.order.oid : 'Loading...'
                                     }</div>
                                 </div>
-                                <div className="upay-info-item">
-                                    <div className="upay-info-item-label">Memo</div>
-                                    <div className="upay-info-item-text">
+                                <div className="upay-info-item flex justify-between">
+                                    <div>Memo</div>
+                                    <div>
                                         {this.state.order ? this.state.order.memo : 'Loading...'}
                                     </div>
                                 </div>
-                                <div className="upay-info-item">
-                                    <div className="upay-info-item-label">Time remains</div>
-                                    <div className="upay-info-item-text">{this.state.timeRemains}</div>
-                                </div>
+
                             </div>
                             {/* amount */}
                             <div>
                                 <hr />
-                                <div className="upay-info-item">
+                                <div className="upay-info-item  flex justify-between">
                                     <div className="upay-info-item-label">Amount</div>
                                     <div className="price bold ">
                                         {
@@ -489,7 +497,7 @@ class HomePage extends React.Component<HomePageProps, HomePageState> {
                             </div>
                             {/* balance remain */}
                             <div>
-                                <div className="upay-info-item">
+                                <div className="upay-info-item  flex justify-between">
                                     <div className="upay-info-item-label">Balance</div>
                                     <div className="text-grey">
                                         {this.state.balance} USDT
@@ -497,21 +505,30 @@ class HomePage extends React.Component<HomePageProps, HomePageState> {
                                 </div>
                             </div>
                             {/* pay button */}
-                            <div className="text-right">
-                                <Button variant="primary" size="sm"
-                                    disabled={this.state.disabled
-                                        || this.state.balance === 0
-                                        || this.state.balance < (this.state.order?.amount || 0)}
+                            {!(this.state.disabled
+                                || this.state.balance === 0
+                                || this.state.balance < (this.state.order?.amount || 0)) ? <div className="text-right d-grid gap-2">
+                                <Button variant="primary"
                                     onClick={() => {
                                         this._doPayWithBalance();
                                     }
-                                    }>
+                                    } className="pay-button margin"
+                                    size="lg"
+                                >
                                     Pay with balance
                                 </Button>
-                            </div>
+                            </div> : null}
                         </div>
-                        <div className="upay-body-right">
-                            <div className="upay-info-item-label">
+                        <div className="upay-body-middle"></div>
+
+                        {this.state.balance === 0
+                            || this.state.balance < (this.state.order?.amount || 0) ? <div className="upay-body-right">
+                            <div className="color-red text-center text-sm margin-top">
+                                You need to deposit {
+                                    this.state.order ? this.state.order.amount - this.state.balance : 'Loading...'
+                                } USDT to the following account
+                            </div>
+                            <div className="upay-info-item-label text-gray">
                                 Select a network
                             </div>
                             <div className="margin-top-sm">
@@ -519,6 +536,8 @@ class HomePage extends React.Component<HomePageProps, HomePageState> {
                                     this.setState({
                                         currentChain: parseInt(e.target.value)
                                     });
+                                }} style={{
+                                    backgroundColor: '#313950',
                                 }}>
                                     {this.state.chains.map((chain, index) => {
                                         return <option key={index} value={index}>{chain.chainName}</option>
@@ -533,7 +552,7 @@ class HomePage extends React.Component<HomePageProps, HomePageState> {
                                     <div> {
                                         this.state.addresses && this.state.chains.length > 0 ? this.state.addresses[this.state.chains[this.state.currentChain].chainType] : 'Loading...'
                                     }</div>
-                                    <img src={IconCopy} alt="copy" className="pointer" onClick={() => {
+                                    <img src={IconCopy} alt="copy" className="pointer icon-sm" onClick={() => {
                                         //
                                         if (this.state.addresses && this.state.chains.length > 0) {
                                             //navigator.clipboard.writeText(this.state.addresses[this.state.chains[this.state.currentChain].chainType]);
@@ -545,42 +564,45 @@ class HomePage extends React.Component<HomePageProps, HomePageState> {
                                     }} />
                                 </Alert> : null}
                             </div>
-                            <Alert variant="light">
-                                <div className="upay-qrcode-wrap">
-                                    <div id="qrCode">
-                                        {this.state.addresses && this.state.chains.length > 0 && !this.state.disabled ? <QRCodeCanvas
-                                            value={
-                                                this.state.addresses && this.state.chains.length > 0 ? this.state.addresses[this.state.chains[this.state.currentChain].chainType] : ''
-                                            }
-                                            size={180}
-                                            level="H"
-                                        /> : null}
-                                        {/* cover the qrcode  */}
-                                        <div className="upay-qrcode-cover" style={{ display: this.state.success ? 'block' : 'none' }}>
-                                            {/* icon */}
-                                            <div className="upay-qrcode-icon text-center">
-                                                <img src={SuccessIcon} alt="success" />
-                                            </div>
+                            <div className="upay-qrcode-wrap flex justify-center margin-top">
+                                <div id="qrCode">
+                                    {this.state.addresses && this.state.chains.length > 0 && !this.state.disabled ? <QRCodeCanvas
+                                        value={
+                                            this.state.addresses && this.state.chains.length > 0 ? this.state.addresses[this.state.chains[this.state.currentChain].chainType] : ''
+                                        }
+                                        size={180}
+                                        level="H"
+                                    /> : null}
+                                    {/* cover the qrcode  */}
+                                    <div className="upay-qrcode-cover" style={{ display: this.state.success ? 'block' : 'none' }}>
+                                        {/* icon */}
+                                        <div className="upay-qrcode-icon text-center">
+                                            <img src={SuccessIcon} alt="success" />
                                         </div>
                                     </div>
-
                                 </div>
 
-                                {!this.state.disabled ? <div className="text-sm text-center">
-                                    You can also scan the QR code with your wallet.
-                                </div> : <div className="text-sm text-center text-danger">
-                                    {this.state.success ? 'The payment has been completed. ' : 'The payment has been expired or closed.'}
-                                </div>}
-                            </Alert>
-                        </div>
+                            </div>
+
+                            {!this.state.disabled ? <div className="text-sm text-center text-gray margin-top">
+                                Scan the QR code to deposit
+                            </div> : <div className="text-sm text-center text-danger">
+                                {this.state.success ? 'The payment has been completed. ' : 'The payment has been expired or closed.'}
+                            </div>}
+                        </div> : <div className="upay-body-right">
+
+                            <div className="text-sm text-gray border margin-top">
+                                Based on your previous payment records, your account has sufficient balance for this payment, so you do not need to top up the account again to complete the payment. If you would like to proceed with the payment for this order, please click the "Pay with Balance" button on the left.
+                            </div>
+                        </div>}
+                        {/* end of body right */}
                     </div>
                 </div>
                 <Loading loading={this.state.loading} />
                 <Toaster />
-                <Footer />
             </div>
         );
     }
 }
 
-export default HomePage;
+export default DarkPage;

@@ -4,7 +4,7 @@ import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
-import HomePage from './pages/HomePage';
+import DarkPage from './pages/DarkPage';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -12,9 +12,10 @@ const root = ReactDOM.createRoot(
 root.render(
   <BrowserRouter>
     <Routes>
-      <Route path="/" element={<HomePage id={
+      <Route path="/" element={<DarkPage id={
         new URLSearchParams(window.location.search).get('id') || ''
       } />} />
+
     </Routes>
   </BrowserRouter>
 );

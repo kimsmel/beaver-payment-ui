@@ -1,0 +1,146 @@
+body {
+    background-color: #1B2233;
+}
+
+.upay-page {
+    background-color: #313950;
+    margin: 1rem;
+    padding: 0.8rem;
+    border-radius: 0.5rem;
+    line-height: 2;
+}
+
+.main-price {
+    color: #01F3F5;
+    font-size: 2rem;
+}
+
+.count-down-text {
+    color: #999999;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.flex {
+    display: flex;
+}
+
+.justify-between {
+    justify-content: space-between;
+}
+
+.upay-info-item>div:first-child {
+    color: #AAAAAA;
+}
+
+.text-gray{
+    color: #AAAAAA;
+}
+
+hr {
+    color: #888888;
+}
+
+.color-red {
+    color: #F02A2B;
+}
+
+.pay-button {
+    background: linear-gradient(90deg, #2333FF 0%, #00BFC2 100%);
+    border-radius: 2rem;
+}
+
+.margin {
+    margin: 1rem;
+}
+
+.text-sm {
+    font-size: 0.8rem;
+}
+
+.margin-top {
+    margin-top: 1rem;
+}
+
+.icon-sm {
+    width: 1.2rem;
+    height: 1.2rem;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.radius-1 {
+    border-radius: 0.5rem;
+}
+
+.radius-2 {
+    border-radius: 1rem;
+}
+
+#qrCode {
+    padding: 1rem 1rem 0.5rem 1rem;
+    background-color: #fff;
+    border-radius: 0.5rem;
+}
+
+@media (max-width: 768px) {
+    .only-pc {
+        display: none;
+    }
+
+    .only-mobile {
+        display: block;
+    }
+}
+
+@media (min-width: 769px) {
+    .only-pc {
+        display: block;
+    }
+
+    .only-mobile {
+        display: none;
+    }
+
+    .upay-body-left {
+        width: 50%;
+    }
+
+    .upay-body-right {
+        width: 50%;
+    }
+
+    .upay-body {
+        display: flex;
+    }
+
+    .upay-page {
+        max-width: 900px;
+        margin: 1rem auto;
+        padding: 1.8rem;
+        margin-top: 2rem;
+    }
+
+    .upay-body-middle {
+        /* a vertical grey line */
+        border-left: 1px dashed #1B2233;
+        margin-bottom: 5rem;
+        margin-top: 5rem;
+        margin-left: 3rem;
+        margin-right: 3rem;
+    }
+}
+
+.border {
+    border: 1px solid #1B2233;
+    padding: 1rem;
+    border-radius: 0.5rem;
+}
