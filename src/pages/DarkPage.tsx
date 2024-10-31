@@ -418,16 +418,16 @@ class DarkPage extends React.Component<DarkPageProps, DarkPageState> {
     render() {
         return (
             <div className="upay-page" >
-                {this.state.warning && !this.state.success ? <div className="upay-container  margin">
+                {this.state.warning && !this.state.success ? <div className="upay-container">
                     <Alert variant="warning flex align-center">
-                        <img src={WarningIcon} alt="warning" className="icon" />
+                        <img src={WarningIcon} alt="warning" className="icon-sm margin-right" />
                         {this.state.warning}
                     </Alert>
                 </div> : null}
-                {this.state.success ? <div className="upay-container  margin-right">
-                    <Alert variant="success" className="align-center flex flex-wrap margin">
-                        <img src={SuccessIcon} alt="success" className="icon" />
-                        The payment has been completed.
+                {this.state.success ? <div className="upay-container">
+                    <Alert variant="success" className="align-center flex flex-wrap">
+                        <img src={SuccessIcon} alt="success" className="icon-sm margin-right" />
+                        Thank you for your payment. The order has been paid successfully.
                         {this.state.order?.redirectUrl && !this.isInApp() ? <span>If the page does not jump automatically, please  <Alert.Link href={
                             this.state.order.redirectUrl
                         }>click here</Alert.Link></span>
@@ -441,7 +441,7 @@ class DarkPage extends React.Component<DarkPageProps, DarkPageState> {
                                         });
                                 }
                             }}
-                        >click to close</Alert.Link></span> : null}
+                        >Click to close</Alert.Link></span> : null}
                     </Alert>
                 </div> : null}
                 <div className="upay-container">
@@ -523,11 +523,11 @@ class DarkPage extends React.Component<DarkPageProps, DarkPageState> {
 
                         {this.state.balance === 0
                             || this.state.balance < (this.state.order?.amount || 0) ? <div className="upay-body-right">
-                            <div className="color-red text-center text-sm margin-top">
+                            { !this.state.success && !this.state.disabled ? <div className="color-red text-center text-sm margin-top">
                                 You need to deposit {
                                     this.state.order ? this.state.order.amount - this.state.balance : 'Loading...'
                                 } USDT to the following account
-                            </div>
+                            </div> : null }
                             <div className="upay-info-item-label text-gray">
                                 Select a network
                             </div>
@@ -548,7 +548,7 @@ class DarkPage extends React.Component<DarkPageProps, DarkPageState> {
                                 </Form.Text>
                             </div>
                             <div className="margin-top">
-                                {!this.state.disabled ? <Alert variant="info" className="align-center flex justify-between word-break text-sm">
+                                <Alert variant="info" className="align-center flex justify-between word-break text-sm">
                                     <div> {
                                         this.state.addresses && this.state.chains.length > 0 ? this.state.addresses[this.state.chains[this.state.currentChain].chainType] : 'Loading...'
                                     }</div>
@@ -562,25 +562,29 @@ class DarkPage extends React.Component<DarkPageProps, DarkPageState> {
                                             });
                                         }
                                     }} />
-                                </Alert> : null}
+                                </Alert>
                             </div>
                             <div className="upay-qrcode-wrap flex justify-center margin-top">
-                                <div id="qrCode">
-                                    {this.state.addresses && this.state.chains.length > 0 && !this.state.disabled ? <QRCodeCanvas
-                                        value={
-                                            this.state.addresses && this.state.chains.length > 0 ? this.state.addresses[this.state.chains[this.state.currentChain].chainType] : ''
-                                        }
-                                        size={180}
-                                        level="H"
-                                    /> : null}
-                                    {/* cover the qrcode  */}
-                                    <div className="upay-qrcode-cover" style={{ display: this.state.success ? 'block' : 'none' }}>
-                                        {/* icon */}
-                                        <div className="upay-qrcode-icon text-center">
-                                            <img src={SuccessIcon} alt="success" />
+                                {this.state.addresses && this.state.chains.length &&
+                                    (/^0x[a-fA-F0-9]{40}$/.test(this.state.addresses[this.state.chains[this.state.currentChain].chainType])
+                                        || /^T[a-zA-Z0-9]{33}$/.test(this.state.addresses[this.state.chains[this.state.currentChain].chainType])
+                                    )
+                                    ? <div id="qrCode">
+                                        <QRCodeCanvas
+                                            value={
+                                                this.state.addresses && this.state.chains.length > 0 ? this.state.addresses[this.state.chains[this.state.currentChain].chainType] : ''
+                                            }
+                                            size={180}
+                                            level="H"
+                                        />
+                                        {/* cover the qrcode  */}
+                                        <div className="upay-qrcode-cover" style={{ display: this.state.success ? 'block' : 'none' }}>
+                                            {/* icon */}
+                                            <div className="upay-qrcode-icon text-center">
+                                                <img src={SuccessIcon} alt="success" />
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
+                                    </div> : null}
 
                             </div>
 
