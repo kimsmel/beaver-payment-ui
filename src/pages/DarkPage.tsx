@@ -13,6 +13,7 @@ import { ChainType } from "../models/ChainType";
 import { PaymentOrder } from "../models/PaymentOrder";
 import copy from "copy-to-clipboard";
 import toast, { Toaster } from 'react-hot-toast';
+import ExceptionForm from "../components/ExceptionForm/ExceptionForm";
 
 
 interface DarkPageProps {
@@ -40,6 +41,8 @@ interface DarkPageState {
     loadTimer?: NodeJS.Timer;
 
     balance: number;
+
+    showException: boolean;
 }
 
 interface CustomWindow extends Window {
@@ -72,6 +75,7 @@ class DarkPage extends React.Component<DarkPageProps, DarkPageState> {
             loadTimer: undefined,
 
             balance: 0,
+            showException: false
 
         };
     }
@@ -357,7 +361,6 @@ class DarkPage extends React.Component<DarkPageProps, DarkPageState> {
                 disabled: true
             });
         }
-
     }
 
     _doPayWithBalance = async () => {
@@ -523,11 +526,11 @@ class DarkPage extends React.Component<DarkPageProps, DarkPageState> {
 
                         {this.state.balance === 0
                             || this.state.balance < (this.state.order?.amount || 0) ? <div className="upay-body-right">
-                            { !this.state.success && !this.state.disabled ? <div className="color-red text-center text-sm margin-top">
+                            {!this.state.success && !this.state.disabled ? <div className="color-red text-center text-sm margin-top">
                                 You need to deposit {
                                     this.state.order ? this.state.order.amount - this.state.balance : 'Loading...'
                                 } USDT to the following account
-                            </div> : null }
+                            </div> : null}
                             <div className="upay-info-item-label text-gray">
                                 Select a network
                             </div>
@@ -574,7 +577,7 @@ class DarkPage extends React.Component<DarkPageProps, DarkPageState> {
                                             value={
                                                 this.state.addresses && this.state.chains.length > 0 ? this.state.addresses[this.state.chains[this.state.currentChain].chainType] : ''
                                             }
-                                            size={180}
+                                            size={140}
                                             level="H"
                                         />
                                         {/* cover the qrcode  */}
@@ -593,17 +596,44 @@ class DarkPage extends React.Component<DarkPageProps, DarkPageState> {
                             </div> : <div className="text-sm text-center text-danger">
                                 {this.state.success ? 'The payment has been completed. ' : 'The payment has been expired or closed.'}
                             </div>}
+
                         </div> : <div className="upay-body-right">
 
                             <div className="text-sm text-gray border margin-top">
                                 Based on your previous payment records, your account has sufficient balance for this payment, so you do not need to top up the account again to complete the payment. If you would like to proceed with the payment for this order, please click the "Pay with Balance" button on the left.
                             </div>
+
                         </div>}
                         {/* end of body right */}
+
+                    </div>
+                    <div style={{
+                        textAlign: 'right',
+                        fontSize: '0.8rem',
+                        marginTop: '1rem',
+                        color: '#6ea8fe',
+                        cursor: 'pointer'
+                    }}>
+                        <div onClick={(e) => {
+                            e.preventDefault();
+                            this.setState({
+                                showException: true
+                            });
+                        }}>Funds not received? </div>
                     </div>
                 </div>
                 <Loading loading={this.state.loading} />
                 <Toaster />
+                <ExceptionForm chains={this.state.chains} show={this.state.showException} onClose={() => {
+                    this.setState({
+                        showException: false
+                    });
+                    this._loadData();
+                }} onError={(e) => {
+                    this.setState({
+                        warning: e,
+                    });
+                }} />
             </div>
         );
     }
