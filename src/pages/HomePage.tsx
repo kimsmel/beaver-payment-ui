@@ -157,7 +157,7 @@ class HomePage extends React.Component<HomePageProps, HomePageState> {
 
         if (response.ok) {
             const data = await response.json();
-            if (data['code'] === 1) {
+            if (data['code'] === 1 && data['data']) {
                 this.setState({
                     order: data['data'],
                 });
