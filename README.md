@@ -20,6 +20,3 @@
 <img src="https://raw.githubusercontent.com/WhiteRiverBay/upay-ui/refs/heads/main/public/examples/screen4.png" ref="" alt="" title="" />
 </center>
 
-<center>
-<img src="https://raw.githubusercontent.com/WhiteRiverBay/upay-ui/refs/heads/main/public/examples/screen5.png" ref="" alt="" title="" />
-</center>
