@@ -1,5 +1,9 @@
 # UPAY-UI
 
+<center>
+<img src="https://github.com/WhiteRiverBay/upay-ui/blob/main/public/logo.png?raw=true" alt="upay" title="upay" width="100px" height="100px" />
+</center>
+
 ## User interface of [UPAY](https://github.com/WhiteRiverBay/upay-release)
 
 ## Screen snap
