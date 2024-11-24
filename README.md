@@ -28,3 +28,6 @@
 <img src="https://raw.githubusercontent.com/WhiteRiverBay/upay-ui/refs/heads/main/public/examples/screen4.png" ref="" alt="" title="" />
 </center>
 
+
+### 5 telegram bot notification
+<img src="https://raw.githubusercontent.com/WhiteRiverBay/upay-ui/refs/heads/main/public/examples/screen6.png" ref="" alt="" title="" />
