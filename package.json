@@ -16,6 +16,7 @@
     "copy-to-clipboard": "^3.3.3",
     "env-cmd": "^10.1.0",
     "ethers": "^6.13.3",
+    "flag-icons": "7.2.3",
     "i18next": "^23.15.1",
     "i18next-browser-languagedetector": "^8.0.0",
     "qrcode.react": "^4.0.1",

@@ -1,0 +1,32 @@
+{
+    "Order ID": "Order ID",
+    "Memo": "Memo",
+    "Amount": "Amount",
+    "Balance": "Balance",
+    "Select Network": "Select Network",
+    "The order has expired or closed.": "The order has expired or closed.",
+    "Funds not received?": "Funds not received?",
+    "Funds not received Info": "If you have not received your funds, please submit the transaction hash of your deposit transaction. We will investigate and get back to you as soon as possible.",
+    "Transaction Hash": "Transaction Hash",
+    "Please enter the transaction hash": "Please enter the transaction hash",
+    "Submit": "Submit",
+    "Thank you for your payment. The order has been paid successfully.": "Thank you for your payment. The order has been paid successfully.",
+    "If the page does not jump automatically, please": "If the page does not jump automatically, please ",
+    "click here": "click here",
+    "Scan the QR code to deposit": "Scan the QR code to deposit",
+    "With balance": "Based on your previous payment records, your account has sufficient balance for this payment, so you do not need to top up the account again to complete the payment. If you would like to proceed with the payment for this order, please click the \"Pay with Balance\" button on the left.",
+    "The order has been closed.": "The order has been closed.",
+    "No balance available.": "No balance available.",
+    "No chain available.": "No chain available.",
+    "No wallet available.": "No wallet available.",
+    "Pay with Balance": "Pay with Balance",
+    "Failed to pay with balance.": "Failed to pay with balance.",
+    "The order does not exist.": "The order does not exist.",
+
+    "You need to deposit": "You need to deposit",
+    "to your account to complete the payment.": "to your account to complete the payment.",
+    "Please transfer the amount to the above address.": "Please transfer the amount to the above address.",
+
+    "The payment has been expired or closed.": "The payment has been expired or closed.",
+    "The payment has been completed.": "The payment has been completed."
+}

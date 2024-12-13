@@ -14,10 +14,15 @@ import { PaymentOrder } from "../models/PaymentOrder";
 import copy from "copy-to-clipboard";
 import toast, { Toaster } from 'react-hot-toast';
 import ExceptionForm from "../components/ExceptionForm/ExceptionForm";
+import Header from "../components/Header/Header";
+import { useTranslation } from "react-i18next";
+import { t } from "i18next";
 
 
 interface DarkPageProps {
     id: string;
+    i18n : any; 
+    t : any;
 }
 
 interface DarkPageState {
@@ -53,7 +58,7 @@ interface CustomWindow extends Window {
 
 declare let window: CustomWindow;
 
-class DarkPage extends React.Component<DarkPageProps, DarkPageState> {
+class DarkPageComponent extends React.Component<DarkPageProps, DarkPageState> {
     constructor(props: DarkPageProps) {
         super(props);
         this.state = {
@@ -81,6 +86,7 @@ class DarkPage extends React.Component<DarkPageProps, DarkPageState> {
     }
 
     _countdown = () => {
+        const { t } = this.props;
         if (this.state.countdownTimer) {
             clearInterval(this.state.countdownTimer);
         }
@@ -92,7 +98,7 @@ class DarkPage extends React.Component<DarkPageProps, DarkPageState> {
                 });
             } else {
                 this.setState({
-                    warning: 'The order has expired or closed.',
+                    warning: t('The order has expired or closed.'),
                     disabled: true
                 });
                 clearInterval(this.state.countdownTimer);
@@ -149,6 +155,7 @@ class DarkPage extends React.Component<DarkPageProps, DarkPageState> {
     }
 
     _loadPaymentOrderSilent = async () => {
+        const {t} = this.props;
         const api = `${API}/api/v1/order/${this.props.id}`;
         const response = await fetch(api, {
             method: 'GET',
@@ -173,13 +180,13 @@ class DarkPage extends React.Component<DarkPageProps, DarkPageState> {
                     this._clearAllTimers();
                 } else if (o.status === 'CLOSED') {
                     this.setState({
-                        warning: 'The order has been closed.',
+                        warning: t('The order has been closed.'),
                         disabled: true
                     });
                     this._clearAllTimers();
                 } else if (o.status === 'EXPIRED') {
                     this.setState({
-                        warning: 'The order has expired.',
+                        warning: t('The order has expired.'),
                         disabled: true
                     });
                     this._clearAllTimers();
@@ -188,7 +195,7 @@ class DarkPage extends React.Component<DarkPageProps, DarkPageState> {
                     if (expireSeconds <= 0) {
                         this._clearAllTimers();
                         this.setState({
-                            warning: 'The order has expired.',
+                            warning: t('The order has expired.'),
                             disabled: true
                         });
                     } else {
@@ -210,7 +217,7 @@ class DarkPage extends React.Component<DarkPageProps, DarkPageState> {
         this.setState({
             loading: true,
         });
-
+        const { t } = this.props;
         const api = `${API}/api/v1/order/${this.props.id}`;
         const response = await fetch(api, {
             method: 'GET',
@@ -221,6 +228,8 @@ class DarkPage extends React.Component<DarkPageProps, DarkPageState> {
 
         if (response.ok) {
             const data = await response.json();
+
+            
             if (data['code'] === 1) {
                 this.setState({
                     order: data['data'],
@@ -255,7 +264,7 @@ class DarkPage extends React.Component<DarkPageProps, DarkPageState> {
                         this._loadBalance(o.uid);
                     } else {
                         this.setState({
-                            warning: 'The order has expired or closed.',
+                            warning: t('The order has expired or closed.'),
                             disabled: true
                         });
                         this._clearAllTimers();
@@ -270,7 +279,7 @@ class DarkPage extends React.Component<DarkPageProps, DarkPageState> {
             }
         } else {
             this.setState({
-                warning: 'The order does not exist.',
+                warning: t('The order does not exist.'),
                 loading: false,
                 disabled: true
             });
@@ -287,6 +296,8 @@ class DarkPage extends React.Component<DarkPageProps, DarkPageState> {
             }
         });
 
+        const { t } = this.props;
+
         if (response.ok) {
             const data = await response.json();
             if (data['code'] === 1) {
@@ -295,18 +306,19 @@ class DarkPage extends React.Component<DarkPageProps, DarkPageState> {
                 });
             } else {
                 this.setState({
-                    warning: 'No chain available.',
+                    warning: t('No chain available.'),
                 });
             }
         } else {
             this.setState({
-                warning: 'No chain available.',
+                warning: t('No chain available.'),
                 disabled: true
             });
         }
     }
 
     _loadBalance = async (uid: string) => {
+        const { t } = this.props;
         const api = `${API}/api/v1/balance/${uid}`;
         const response = await fetch(api, {
             method: 'GET',
@@ -323,12 +335,12 @@ class DarkPage extends React.Component<DarkPageProps, DarkPageState> {
                 });
             } else {
                 this.setState({
-                    warning: 'No balance available.',
+                    warning: t('No balance available.'),
                 });
             }
         } else {
             this.setState({
-                warning: 'No balance available.',
+                warning: t('No balance available.'),
                 disabled: true
             });
         }
@@ -344,6 +356,8 @@ class DarkPage extends React.Component<DarkPageProps, DarkPageState> {
             }
         });
 
+        const { t } = this.props;
+
         if (response.ok) {
             const data = await response.json();
             if (data['code'] === 1) {
@@ -352,12 +366,12 @@ class DarkPage extends React.Component<DarkPageProps, DarkPageState> {
                 });
             } else {
                 this.setState({
-                    warning: 'No wallet available.',
+                    warning: t('No wallet available.'),
                 });
             }
         } else {
             this.setState({
-                warning: 'No wallet available.',
+                warning: t('No wallet available.'),
                 disabled: true
             });
         }
@@ -392,7 +406,7 @@ class DarkPage extends React.Component<DarkPageProps, DarkPageState> {
             }
         } else {
             this.setState({
-                warning: 'Failed to pay with balance.',
+                warning: t('Failed to pay with balance.'),
             });
         }
     }
@@ -407,9 +421,11 @@ class DarkPage extends React.Component<DarkPageProps, DarkPageState> {
     }
 
     componentDidMount() {
+        // console log current i18n code
+        console.log(this.props.i18n.language);
         if (this.props.id === '') {
             this.setState({
-                warning: 'The order does not exist.',
+                warning: t('The order does not exist.'),
                 disabled: true
             });
         } else {
@@ -419,224 +435,243 @@ class DarkPage extends React.Component<DarkPageProps, DarkPageState> {
     }
 
     render() {
+        const { t } = this.props;
         return (
-            <div className="upay-page" >
-                {this.state.warning && !this.state.success ? <div className="upay-container">
-                    <Alert variant="warning flex align-center">
-                        <img src={WarningIcon} alt="warning" className="icon-sm margin-right" />
-                        {this.state.warning}
-                    </Alert>
-                </div> : null}
-                {this.state.success ? <div className="upay-container">
-                    <Alert variant="success" className="align-center flex flex-wrap">
-                        <img src={SuccessIcon} alt="success" className="icon-sm margin-right" />
-                        Thank you for your payment. The order has been paid successfully.
-                        {this.state.order?.redirectUrl && !this.isInApp() ? <span>If the page does not jump automatically, please  <Alert.Link href={
-                            this.state.order.redirectUrl
-                        }>click here</Alert.Link></span>
-                            : null}
-                        {this.isInApp() ? <span><Alert.Link
-                            onClick={() => {
-                                if (window.flutter_inappwebview) {
-                                    window.flutter_inappwebview.callHandler('popPage', true)
-                                        .then(function (result) {
-                                            console.log("Page closed");
-                                        });
-                                }
-                            }}
-                        >Click to close</Alert.Link></span> : null}
-                    </Alert>
-                </div> : null}
-                <div className="upay-container">
-                    <div className="upay-body">
+            <div>
+                <Header t={t} i18n={this.props.i18n} />
+                <div className="upay-page" >
 
-                        <div className="upay-body-left">
-                            <div className="main-price text-center" style={{
-                                lineHeight: 1,
-                                marginTop: '1rem'
-                            }}>
-                                {
-                                    this.state.order ? this.state.order.amount : 'Loading...'
-                                } USDT
-                            </div>
-                            <div className="count-down-text text-center">
-                                {this.state.timeRemains}
-                            </div>
-                            <div style={{
-                                height: '1rem'
-                            }}></div>
-                            <div>
-                                <div className="upay-info-item flex justify-between">
-                                    <div>ID</div>
-                                    <div># {
-                                        this.state.order ? this.state.order.id : 'Loading...'
-                                    }</div>
-                                </div>
-                                <div className="upay-info-item flex justify-between">
-                                    <div>Order ID</div>
-                                    <div># {
-                                        this.state.order ? this.state.order.oid : 'Loading...'
-                                    }</div>
-                                </div>
-                                <div className="upay-info-item flex justify-between">
-                                    <div>Memo</div>
-                                    <div>
-                                        {this.state.order ? this.state.order.memo : 'Loading...'}
-                                    </div>
-                                </div>
-
-                            </div>
-                            {/* amount */}
-                            <div>
-                                <hr />
-                                <div className="upay-info-item  flex justify-between">
-                                    <div className="upay-info-item-label">Amount</div>
-                                    <div className="price bold ">
-                                        {
-                                            this.state.order ? this.state.order.amount : 'Loading...'
-                                        } USDT
-                                    </div>
-                                </div>
-                            </div>
-                            {/* balance remain */}
-                            <div>
-                                <div className="upay-info-item  flex justify-between">
-                                    <div className="upay-info-item-label">Balance</div>
-                                    <div className="text-grey">
-                                        {this.state.balance} USDT
-                                    </div>
-                                </div>
-                            </div>
-                            {/* pay button */}
-                            {!(this.state.disabled
-                                || this.state.balance === 0
-                                || this.state.balance < (this.state.order?.amount || 0)) ? <div className="text-right d-grid gap-2">
-                                <Button variant="primary"
-                                    onClick={() => {
-                                        this._doPayWithBalance();
-                                    }
-                                    } className="pay-button margin"
-                                    size="lg"
-                                >
-                                    Pay with balance
-                                </Button>
-                            </div> : null}
-                        </div>
-                        <div className="upay-body-middle"></div>
-
-                        {this.state.balance === 0
-                            || this.state.balance < (this.state.order?.amount || 0) ? <div className="upay-body-right">
-                            {!this.state.success && !this.state.disabled ? <div className="color-red text-center text-sm margin-top">
-                                You need to deposit {
-                                    this.state.order ? this.state.order.amount - this.state.balance : 'Loading...'
-                                } USDT to the following account
-                            </div> : null}
-                            <div className="upay-info-item-label text-gray">
-                                Select a network
-                            </div>
-                            <div className="margin-top-sm">
-                                <Form.Select aria-label="Select a network" onChange={(e) => {
-                                    this.setState({
-                                        currentChain: parseInt(e.target.value)
-                                    });
-                                }} style={{
-                                    backgroundColor: '#313950',
-                                }}>
-                                    {this.state.chains.map((chain, index) => {
-                                        return <option key={index} value={index}>{chain.chainName}</option>
-                                    })}
-                                </Form.Select>
-                                <Form.Text className="text-muted text-sm">
-                                    {this.state.chains.length > 0 ? this.state.chains[this.state.currentChain].description : 'Loading...'}
-                                </Form.Text>
-                            </div>
-                            <div className="margin-top">
-                                <Alert variant="info" className="align-center flex justify-between word-break text-sm">
-                                    <div> {
-                                        this.state.addresses && this.state.chains.length > 0 ? this.state.addresses[this.state.chains[this.state.currentChain].chainType] : 'Loading...'
-                                    }</div>
-                                    <img src={IconCopy} alt="copy" className="pointer icon-sm" onClick={() => {
-                                        //
-                                        if (this.state.addresses && this.state.chains.length > 0) {
-                                            //navigator.clipboard.writeText(this.state.addresses[this.state.chains[this.state.currentChain].chainType]);
-                                            copy(this.state.addresses[this.state.chains[this.state.currentChain].chainType]);
-                                            toast('Copied to clipboard', {
-                                                duration: 1000,
+                    {this.state.warning && !this.state.success ? <div className="upay-container">
+                        <Alert variant="warning flex align-center">
+                            <img src={WarningIcon} alt="warning" className="icon-sm margin-right" />
+                            {this.state.warning}
+                        </Alert>
+                    </div> : null}
+                    {this.state.success ? <div className="upay-container">
+                        <Alert variant="success" className="align-center flex flex-wrap">
+                            <img src={SuccessIcon} alt="success" className="icon-sm margin-right" />
+                            {t('Thank you for your payment. The order has been paid successfully.')}
+                            {this.state.order?.redirectUrl && !this.isInApp() ? <span>{t('If the page does not jump automatically, please')}  <Alert.Link href={
+                                this.state.order.redirectUrl
+                            }>{t('click here')}</Alert.Link></span>
+                                : null}
+                            {this.isInApp() ? <span><Alert.Link
+                                onClick={() => {
+                                    if (window.flutter_inappwebview) {
+                                        window.flutter_inappwebview.callHandler('popPage', true)
+                                            .then(function (result) {
+                                                console.log("Page closed");
                                             });
-                                        }
-                                    }} />
-                                </Alert>
-                            </div>
-                            <div className="upay-qrcode-wrap flex justify-center margin-top">
-                                {this.state.addresses && this.state.chains.length &&
-                                    (/^0x[a-fA-F0-9]{40}$/.test(this.state.addresses[this.state.chains[this.state.currentChain].chainType])
-                                        || /^T[a-zA-Z0-9]{33}$/.test(this.state.addresses[this.state.chains[this.state.currentChain].chainType])
-                                    )
-                                    ? <div id="qrCode">
-                                        <QRCodeCanvas
-                                            value={
-                                                this.state.addresses && this.state.chains.length > 0 ? this.state.addresses[this.state.chains[this.state.currentChain].chainType] : ''
-                                            }
-                                            size={140}
-                                            level="H"
-                                        />
-                                        {/* cover the qrcode  */}
-                                        <div className="upay-qrcode-cover" style={{ display: this.state.success ? 'block' : 'none' }}>
-                                            {/* icon */}
-                                            <div className="upay-qrcode-icon text-center">
-                                                <img src={SuccessIcon} alt="success" />
-                                            </div>
+                                    }
+                                }}
+                            >Click to close</Alert.Link></span> : null}
+                        </Alert>
+                    </div> : null}
+                    <div className="upay-container">
+                        <div className="upay-body">
+
+                            <div className="upay-body-left">
+                                <div className="main-price text-center" style={{
+                                    lineHeight: 1,
+                                    marginTop: '1rem'
+                                }}>
+                                    {
+                                        this.state.order ? this.state.order.amount : 'Loading...'
+                                    } USDT
+                                </div>
+                                <div className="count-down-text text-center">
+                                    {this.state.timeRemains}
+                                </div>
+                                <div style={{
+                                    height: '1rem'
+                                }}></div>
+                                <div>
+                                    <div className="upay-info-item flex justify-between">
+                                        <div>ID</div>
+                                        <div># {
+                                            this.state.order ? this.state.order.id : 'Loading...'
+                                        }</div>
+                                    </div>
+                                    <div className="upay-info-item flex justify-between">
+                                        <div>{t('Order ID')}</div>
+                                        <div># {
+                                            this.state.order ? this.state.order.oid : 'Loading...'
+                                        }</div>
+                                    </div>
+                                    <div className="upay-info-item flex justify-between">
+                                        <div>{t('Memo')}</div>
+                                        <div>
+                                            {this.state.order ? this.state.order.memo : 'Loading...'}
                                         </div>
-                                    </div> : null}
+                                    </div>
 
+                                </div>
+                                {/* amount */}
+                                <div>
+                                    <hr />
+                                    <div className="upay-info-item  flex justify-between">
+                                        <div className="upay-info-item-label">{t('Amount')}</div>
+                                        <div className="price bold ">
+                                            {
+                                                this.state.order ? this.state.order.amount : 'Loading...'
+                                            } USD
+                                        </div>
+                                    </div>
+                                </div>
+                                {/* balance remain */}
+                                <div>
+                                    <div className="upay-info-item  flex justify-between">
+                                        <div className="upay-info-item-label">{t('Balance')}</div>
+                                        <div className="text-grey">
+                                            {this.state.balance} USD
+                                        </div>
+                                    </div>
+                                </div>
+                                {/* pay button */}
+                                {!(this.state.disabled
+                                    || this.state.balance === 0
+                                    || this.state.balance < (this.state.order?.amount || 0)) ? <div className="text-right d-grid gap-2">
+                                    <Button variant="primary"
+                                        onClick={() => {
+                                            this._doPayWithBalance();
+                                        }
+                                        } className="pay-button margin"
+                                        size="lg"
+                                    >
+                                        {t('Pay with Balance')}
+                                    </Button>
+                                </div> : null}
                             </div>
+                            <div className="upay-body-middle"></div>
 
-                            {!this.state.disabled ? <div className="text-sm text-center text-gray margin-top">
-                                Scan the QR code to deposit
-                            </div> : <div className="text-sm text-center text-danger">
-                                {this.state.success ? 'The payment has been completed. ' : 'The payment has been expired or closed.'}
+                            {this.state.balance === 0
+                                || this.state.balance < (this.state.order?.amount || 0) ? <div className="upay-body-right">
+                                {!this.state.success && !this.state.disabled ? <div className="color-red text-center text-sm margin-top">
+                                    {t('You need to deposit')} {
+                                        this.state.order ? this.state.order.amount - this.state.balance : 'Loading...'
+                                    } USDT {t('to your account to complete the payment.')}
+                                </div> : null}
+                                <div className="upay-info-item-label text-gray">
+                                    {t('Select Network')}
+                                </div>
+                                <div className="margin-top-sm">
+                                    <Form.Select aria-label="Select a network" onChange={(e) => {
+                                        this.setState({
+                                            currentChain: parseInt(e.target.value)
+                                        });
+                                    }} style={{
+                                        backgroundColor: '#313950',
+                                    }}>
+                                        {this.state.chains.map((chain, index) => {
+                                            return <option key={index} value={index}>{chain.chainName}</option>
+                                        })}
+                                    </Form.Select>
+                                    <Form.Text className="text-muted text-sm">
+                                        {this.state.chains.length > 0 ? this.state.chains[this.state.currentChain].descriptionMap[
+                                            this.props.i18n.language
+                                        ] : 'Loading...'}
+                                    </Form.Text>
+                                </div>
+                                <div className="margin-top">
+                                    <Alert variant="info" className="align-center flex justify-between word-break text-sm">
+                                        <div> {
+                                            this.state.addresses && this.state.chains.length > 0 ? this.state.addresses[this.state.chains[this.state.currentChain].chainType] : 'Loading...'
+                                        }</div>
+                                        <img src={IconCopy} alt="copy" className="pointer icon-sm" onClick={() => {
+                                            //
+                                            if (this.state.addresses && this.state.chains.length > 0) {
+                                                //navigator.clipboard.writeText(this.state.addresses[this.state.chains[this.state.currentChain].chainType]);
+                                                copy(this.state.addresses[this.state.chains[this.state.currentChain].chainType]);
+                                                toast('Copied to clipboard', {
+                                                    duration: 1000,
+                                                });
+                                            }
+                                        }} />
+                                    </Alert>
+                                </div>
+                                <div className="upay-qrcode-wrap flex justify-center margin-top">
+                                    {this.state.addresses && this.state.chains.length &&
+                                        (/^0x[a-fA-F0-9]{40}$/.test(this.state.addresses[this.state.chains[this.state.currentChain].chainType])
+                                            || /^T[a-zA-Z0-9]{33}$/.test(this.state.addresses[this.state.chains[this.state.currentChain].chainType])
+                                        )
+                                        ? <div id="qrCode">
+                                            <QRCodeCanvas
+                                                value={
+                                                    this.state.addresses && this.state.chains.length > 0 ? this.state.addresses[this.state.chains[this.state.currentChain].chainType] : ''
+                                                }
+                                                size={140}
+                                                level="H"
+                                            />
+                                            {/* cover the qrcode  */}
+                                            <div className="upay-qrcode-cover" style={{ display: this.state.success ? 'block' : 'none' }}>
+                                                {/* icon */}
+                                                <div className="upay-qrcode-icon text-center">
+                                                    <img src={SuccessIcon} alt="success" />
+                                                </div>
+                                            </div>
+                                        </div> : null}
+
+                                </div>
+
+                                {!this.state.disabled ? <div className="text-sm text-center text-gray margin-top">
+                                    {t('Please transfer the amount to the above address.')}
+                                </div> : <div className="text-sm text-center text-danger">
+                                    {this.state.success ? t('The payment has been completed.') : t('The payment has been expired or closed.')}
+                                </div>}
+
+                            </div> : <div className="upay-body-right">
+
+                                <div className="text-sm text-gray border margin-top">
+                                    {t('With balance')}
+                                </div>
+
                             </div>}
+                            {/* end of body right */}
 
-                        </div> : <div className="upay-body-right">
-
-                            <div className="text-sm text-gray border margin-top">
-                                Based on your previous payment records, your account has sufficient balance for this payment, so you do not need to top up the account again to complete the payment. If you would like to proceed with the payment for this order, please click the "Pay with Balance" button on the left.
-                            </div>
-
-                        </div>}
-                        {/* end of body right */}
-
+                        </div>
+                        <div style={{
+                            textAlign: 'right',
+                            fontSize: '0.8rem',
+                            marginTop: '1rem',
+                            color: '#6ea8fe',
+                            cursor: 'pointer'
+                        }}>
+                            <div onClick={(e) => {
+                                e.preventDefault();
+                                this.setState({
+                                    showException: true
+                                });
+                            }}>
+                                {t('Funds not received?')}
+                                 </div>
+                        </div>
                     </div>
-                    <div style={{
-                        textAlign: 'right',
-                        fontSize: '0.8rem',
-                        marginTop: '1rem',
-                        color: '#6ea8fe',
-                        cursor: 'pointer'
-                    }}>
-                        <div onClick={(e) => {
-                            e.preventDefault();
-                            this.setState({
-                                showException: true
-                            });
-                        }}>Funds not received? </div>
-                    </div>
+                    <Loading loading={this.state.loading} />
+                    <Toaster />
+                    <ExceptionForm chains={this.state.chains} show={this.state.showException} onClose={() => {
+                        this.setState({
+                            showException: false
+                        });
+                        this._loadData();
+                    }} onError={(e) => {
+                        this.setState({
+                            warning: e,
+                        });
+                    }} i18n={this.props.i18n} t={t} />
                 </div>
-                <Loading loading={this.state.loading} />
-                <Toaster />
-                <ExceptionForm chains={this.state.chains} show={this.state.showException} onClose={() => {
-                    this.setState({
-                        showException: false
-                    });
-                    this._loadData();
-                }} onError={(e) => {
-                    this.setState({
-                        warning: e,
-                    });
-                }} />
             </div>
         );
     }
 }
 
-export default DarkPage;
+
+export const DarkPage = (props: any) => {
+    const {t, i18n} = useTranslation();
+    const id = new URLSearchParams(window.location.search).get('id') || ''
+    // if local storage has not language, set it to en
+    if (!localStorage.getItem('language')) {
+        // set it to system language
+        localStorage.setItem('language', i18n.language);
+    }
+    return <DarkPageComponent id={id} i18n={i18n} t={t} />
+}

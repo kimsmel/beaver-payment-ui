@@ -8,6 +8,8 @@ interface IExceptionFormProps {
     show: boolean;
     chains: ChainType[];
     onClose: () => void;
+    i18n: any;
+    t: any;
     onError: (error: string) => void;
 }
 
@@ -30,15 +32,16 @@ class ExceptionForm extends React.Component<IExceptionFormProps, IExceptionFormS
     }
 
     doSubmit = async () => {
+        const { t } = this.props;
         if (this.state.chain === undefined) {
             this.setState({
-                error: 'Please select a chain'
+                error: t('Please select a chain')
             });
             return;
         }
         if (!/^0x[a-zA-Z0-9]{64}$/.test(this.state.txHash) && !/^[a-zA-Z0-9]{64}$/.test(this.state.txHash)) {
             this.setState({
-                error: 'Invalid transaction hash'
+                error: t('Invalid transaction hash')
             });
             return;
         }
@@ -80,16 +83,17 @@ class ExceptionForm extends React.Component<IExceptionFormProps, IExceptionFormS
     }
 
     render() {
+        const { t } = this.props;
         return (
             <Modal show={this.props.show}>
                 <Modal.Header>
-                    Funds not received?
+                    {t('Funds not received?')}
                     <button type="button" className="btn-close" onClick={this.props.onClose}></button>
                 </Modal.Header>
                 <Modal.Body>
                     <Alert variant='info'>
                         <p>
-                            If you have not received your funds, please submit the transaction hash of your deposit transaction. We will investigate and get back to you as soon as possible.
+                            {t('Funds not received Info')}
                         </p>
                     </Alert>
                     <Alert variant='danger' hidden={this.state.error === undefined}>
@@ -100,7 +104,7 @@ class ExceptionForm extends React.Component<IExceptionFormProps, IExceptionFormS
                     }}></div>
                     <Form>
                         <Form.Group>
-                            <Form.Label>Select chain</Form.Label>
+                            <Form.Label>{t('Select Network')}</Form.Label>
                             <Form.Select 
                                 isInvalid={this.state.chain === undefined}
                                 isValid={this.state.chain !== undefined}
@@ -113,7 +117,9 @@ class ExceptionForm extends React.Component<IExceptionFormProps, IExceptionFormS
                                     });
                                 }
                             }}>
-                                <option value="-1">Select a chain</option>
+                                <option value="-1">
+                                    {t('Select Network')}
+                                </option>
                                 {
                                     this.props.chains.map((chain) => {
                                         return (
@@ -140,7 +146,7 @@ class ExceptionForm extends React.Component<IExceptionFormProps, IExceptionFormS
                     </Form>
                 </Modal.Body>
                 <Modal.Footer>
-                    <button type="button" className="btn btn-primary">Submit</button>
+                    <button type="button" className="btn btn-primary">{t('Submit')}</button>
                 </Modal.Footer>
             </Modal>
         );

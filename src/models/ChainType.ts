@@ -3,4 +3,5 @@ export interface ChainType {
     description: string;
     chainType: string;
     chainId?: number;
+    descriptionMap: any;
 }

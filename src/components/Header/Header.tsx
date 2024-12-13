@@ -1,21 +1,32 @@
 import React from "react";
 
 import "./Header.css";
-// import I18NLogo from "../../assets/icons/i18n.svg";
+import I18NMenu from "../I18NMenu/I18NMenu";
 
-class Header extends React.Component {
+interface HeaderProps {
+    i18n: any;
+    t: any;
+}
+
+class Header extends React.Component<HeaderProps> {
+
+    setLanguage = (languageCode: string) => {
+        this.props.i18n.changeLanguage(languageCode);
+    }
+
     render() {
         return (
             <div className="upay-header">
                 <div className="upay-row flex justify-between align-center">
-                    <div>
-                        <div className="upay-header-logo">
-                        </div>
+                    <div className="flex align-center">
+                        <img src="logo192.png" alt="UPAY" className="icon" />
                         <div className="upay-header-title">
                             UPAY
                         </div>
                     </div>
-                        {/* <img src={I18NLogo} alt="I18N" className="icon"/> */}
+                    <I18NMenu callback={
+                        this.setLanguage
+                    }/>
                 </div>
             </div>
         );

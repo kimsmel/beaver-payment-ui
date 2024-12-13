@@ -420,7 +420,6 @@ class HomePage extends React.Component<HomePageProps, HomePageState> {
     render() {
         return (
             <div className="upay-page" >
-                <Header />
                 {this.state.warning && !this.state.success ? <div className="upay-container  margin">
                     <Alert variant="warning flex align-center">
                         <img src={WarningIcon} alt="warning" className="icon" />
