@@ -178,3 +178,12 @@ hr {
 .relative {
     position: relative;
 }
+
+.upay-item-image img {
+    max-height: 8rem;
+    border-radius: 0.5rem;
+}
+
+.upay-item-image {
+    text-align: center;
+}

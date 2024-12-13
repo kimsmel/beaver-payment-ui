@@ -11,4 +11,5 @@ export interface PaymentOrder {
     memo: string;
     closedAt?: number;
     redirectUrl?: string;
+    logo?: string;
 }

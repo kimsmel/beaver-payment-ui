@@ -471,6 +471,11 @@ class DarkPageComponent extends React.Component<DarkPageProps, DarkPageState> {
                         <div className="upay-body">
 
                             <div className="upay-body-left">
+                                { this.state.order && this.state.order.logo ? <div className="upay-item-image">
+                                    <img alt="" src={
+                                        this.state.order ? this.state.order.logo : ''
+                                    } />
+                                </div> : null }
                                 <div className="main-price text-center" style={{
                                     lineHeight: 1,
                                     marginTop: '1rem'
