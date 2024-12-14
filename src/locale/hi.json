@@ -24,5 +24,7 @@
     "The order does not exist.": "ऑर्डर मौजूद नहीं है।",
     "You need to deposit": "आपको जमा करने की आवश्यकता है",
     "to your account to complete the payment.": "भुगतान पूरा करने के लिए अपने खाते में।",
-    "Please transfer the amount to the above address.": "कृपया राशि को ऊपर दिए गए पते पर स्थानांतरित करें।"
+    "Please transfer the amount to the above address.": "कृपया राशि को ऊपर दिए गए पते पर स्थानांतरित करें।",
+    "Pay with wallet": "वॉलेट से भुगतान करें",
+    "Or transfer token directly": "या सीधे टोकन स्थानांतरित करें"
 }

@@ -10,7 +10,7 @@
     "Transaction Hash": "แฮชธุรกรรม",
     "Please enter the transaction hash": "กรุณาใส่แฮชธุรกรรม",
     "Submit": "ส่ง",
-    "Thank you for your payment. The order has been paid successfully.": "ขอบคุณสำหรับการชำระเงิน คำสั่งซื้อได้รับการชำระเงินเรียบร้อยแล้ว",
+    "Thank you for your payment. The order has been paid successfully.": "ขอบคุณสำหรับการชำระเงิน คำสั่งซื้อ��ด้รับการชำระเงินเรียบร้อยแล้ว",
     "If the page does not jump automatically, please": "หากหน้าเว็บไม่เปลี่ยนโดยอัตโนมัติ กรุณา",
     "click here": "คลิกที่นี่",
     "Scan the QR code to deposit": "สแกนคิวอาร์โค้ดเพื่อฝากเงิน",
@@ -22,7 +22,8 @@
     "Pay with Balance": "ชำระเงินด้วยยอดคงเหลือ",
     "Failed to pay with balance.": "การชำระเงินด้วยยอดคงเหลือล้มเหลว",
     "The order does not exist.": "คำสั่งซื้อไม่มีอยู่",
-
+    "Pay with wallet": "ชำระเงินด้วยวอลเล็ต",
+    "Or transfer token directly": "หรือโอนโทเค็นโดยตรง",
     "You need to deposit": "คุณต้องฝากเงิน",
     "to your account to complete the payment.": "เข้าบัญชีของคุณเพื่อทำการชำระเงินให้เสร็จสมบูรณ์",
     "Please transfer the amount to the above address.": "กรุณาโอนจำนวนเงินไปยังที่อยู่ด้านบน"

@@ -5,11 +5,11 @@ import './Footer.css';
 class Footer extends React.Component {
     render() {
         return (
-            <div className="upay-footer">
+            <footer className="upay-footer">
                 <div className='text-left text-sm'>
-                    &copy; 2024 UPAY
+                    &copy; 2024 {process.env.REACT_APP_NAME}
                 </div>
-            </div>
+            </footer>
         );
     }
 }

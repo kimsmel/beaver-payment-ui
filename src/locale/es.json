@@ -26,5 +26,7 @@
     "to your account to complete the payment.": "en su cuenta para completar el pago.",
     "Please transfer the amount to the above address.": "Por favor transfiera la cantidad a la dirección anterior.",
     "The payment has been expired or closed.": "El pago ha expirado o se ha cerrado.",
-    "The payment has been completed.": "El pago se ha completado."
+    "The payment has been completed.": "El pago se ha completado.",
+    "Pay with wallet": "Pagar con billetera",
+    "Or transfer token directly" : "O transferir token directamente"
 }

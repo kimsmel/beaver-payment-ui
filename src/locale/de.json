@@ -22,7 +22,8 @@
     "Pay with Balance": "Mit Guthaben bezahlen",
     "Failed to pay with balance.": "Bezahlung mit Guthaben fehlgeschlagen.",
     "The order does not exist.": "Die Bestellung existiert nicht.",
-
+    "Pay with wallet": "Mit Brieftasche bezahlen",
+    "Or transfer token directly": "Oder Token direkt übertragen",
     "You need to deposit": "Sie müssen einzahlen",
     "to your account to complete the payment.": "auf Ihr Konto, um die Zahlung abzuschließen.",
     "Please transfer the amount to the above address.": "Bitte überweisen Sie den Betrag an die oben angegebene Adresse.",

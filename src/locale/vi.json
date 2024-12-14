@@ -22,7 +22,8 @@
     "Pay with Balance": "Thanh toán bằng số dư",
     "Failed to pay with balance.": "Thanh toán bằng số dư thất bại.",
     "The order does not exist.": "Đơn hàng không tồn tại.",
-
+    "Pay with wallet": "Thanh toán bằng ví",
+    "Or transfer token directly": "Hoặc chuyển token trực tiếp",
     "You need to deposit": "Bạn cần nạp",
     "to your account to complete the payment.": "vào tài khoản của bạn để hoàn tất thanh toán.",
     "Please transfer the amount to the above address.": "Vui lòng chuyển số tiền đến địa chỉ trên."

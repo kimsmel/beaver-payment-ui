@@ -24,5 +24,7 @@
     "The order does not exist.": "Заказ не существует.",
     "You need to deposit": "Вам необходимо внести",
     "to your account to complete the payment.": "на ваш счет для завершения платежа.",
-    "Please transfer the amount to the above address.": "Пожалуйста, переведите сумму на указанный выше адрес."
+    "Please transfer the amount to the above address.": "Пожалуйста, переведите сумму на указанный выше адрес.",
+    "Pay with wallet": "Оплатить с кошелька",
+    "Or transfer token directly": "Или переведите токен напрямую"
 }

@@ -24,5 +24,7 @@
     "The order does not exist.": "L'ordine non esiste.",
     "You need to deposit": "Devi depositare",
     "to your account to complete the payment.": "sul tuo account per completare il pagamento.",
-    "Please transfer the amount to the above address.": "Per favore trasferisci l'importo all'indirizzo sopra indicato."
+    "Please transfer the amount to the above address.": "Per favore trasferisci l'importo all'indirizzo sopra indicato.",
+    "Pay with wallet": "Paga con portafoglio",
+    "Or transfer token directly": "Oppure trasferisci il token direttamente"
 }

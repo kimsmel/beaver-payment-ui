@@ -26,5 +26,7 @@
     "to your account to complete the payment.": "到您的账户以完成支付。",
     "Please transfer the amount to the above address.": "请将金额转至上述地址。",
     "The payment has been expired or closed.": "支付已过期或关闭。",
-    "The payment has been completed.": "支付已完成。"
+    "The payment has been completed.": "支付已完成。",
+    "Pay with wallet": "使用钱包支付",
+    "Or transfer token directly" : "或直接转账代币"
 }

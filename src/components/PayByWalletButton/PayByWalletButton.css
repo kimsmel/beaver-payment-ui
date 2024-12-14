@@ -1,0 +1,98 @@
+
+
+.currencyItem {
+    align-items: center;
+    align-content: center;
+    padding: 0.3rem 0.4rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 0.5rem;
+    cursor: pointer;
+    margin-bottom: 0.8rem;
+    font-size: 0.8rem;
+    height: 5rem;
+    width: 5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.2rem;
+}
+
+.currencyItem.active {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid #6edff6;
+}
+
+.currencyItem:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.currencyItem img {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 0.5rem;
+}
+
+.chainItem {
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+    padding: 0.3rem 0.4rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 0.5rem;
+    cursor: pointer;
+    margin-bottom: 0.8rem;
+    font-size: 0.8rem;
+}
+
+.chainItem:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.chainItem.active {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.walletItem {
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+    height: 3rem;
+    padding: 1.2rem 1.2rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 0.5rem;
+    cursor: pointer;
+    margin-bottom: 0.8rem;
+}
+
+.walletItem:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.walletItem img {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 0.5rem;
+}
+
+.currencyPanel {
+    padding: 1rem;
+    border-radius: 0.5rem;
+    background-color: #313950;
+    width: 100%;
+    min-height: 8rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.walletWrapper {
+    gap: 1rem;
+}
+
+.error {
+    color: red;
+    font-size: 0.8rem;
+    text-align: center;
+    margin-bottom: 0.5rem;
+}

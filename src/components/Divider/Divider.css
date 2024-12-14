@@ -1,0 +1,33 @@
+.divider {
+    display: flex;
+    overflow: hidden;
+    position: relative;
+    align-items: center;
+    margin: 1rem 0;
+}
+
+.divider hr {
+    background-color: #AAAAAA;
+    height: 1px;
+    border: none;
+    width: 100%;
+    box-sizing: content-box;
+    overflow: visible;
+    margin-inline-start: auto;
+    margin-inline-end: auto;
+    display: block;
+}
+
+.divider p {
+    padding: 0 0.1rem;
+    white-space: nowrap;
+    margin: 0;
+    box-sizing: border-box;
+    unicode-bidi: isolate;
+}
+
+.divider span {
+    left: 50%;
+    padding: 0 1rem;
+    white-space: nowrap;
+}

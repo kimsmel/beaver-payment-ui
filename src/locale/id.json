@@ -22,8 +22,9 @@
     "Pay with Balance": "Bayar dengan Saldo",
     "Failed to pay with balance.": "Gagal membayar dengan saldo.",
     "The order does not exist.": "Pesanan tidak ada.",
-
     "You need to deposit": "Anda perlu deposit",
     "to your account to complete the payment.": "ke akun Anda untuk menyelesaikan pembayaran.",
-    "Please transfer the amount to the above address.": "Silakan transfer jumlah tersebut ke alamat di atas."
+    "Please transfer the amount to the above address.": "Silakan transfer jumlah tersebut ke alamat di atas.",
+    "Pay with wallet": "Bayar dengan dompet",
+    "Or transfer token directly": "Atau transfer token langsung"
 }

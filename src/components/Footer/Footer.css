@@ -1,10 +1,8 @@
 .upay-footer {
     background-color: #000;
-    color: #fff;
+    color: #AAAAAA;
     padding: 1rem;
     text-align: center;
-    position: fixed;
-    bottom: 0;
     height: 3rem;
     width: 100%;
 }

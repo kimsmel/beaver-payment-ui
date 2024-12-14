@@ -1,6 +1,6 @@
 {
-  "short_name": "U-Pay",
-  "name": "A USDT payment system",  
+  "short_name": "Beaver Payment",
+  "name": "A USDT/USDC payment system",  
   "icons": [
     {
       "src": "favicon.ico",

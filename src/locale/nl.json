@@ -24,5 +24,7 @@
     "The order does not exist.": "De bestelling bestaat niet.",
     "You need to deposit": "U moet storten",
     "to your account to complete the payment.": "op uw account om de betaling te voltooien.",
-    "Please transfer the amount to the above address.": "Gelieve het bedrag over te maken naar het bovenstaande adres."
+    "Please transfer the amount to the above address.": "Gelieve het bedrag over te maken naar het bovenstaande adres.",
+    "Pay with wallet": "Betalen met wallet",
+    "Or transfer token directly": "Of stuur token direct over"
 }

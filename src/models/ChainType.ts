@@ -4,4 +4,11 @@ export interface ChainType {
     chainType: string;
     chainId?: number;
     descriptionMap: any;
+    usdtContracts: UsdtContract[];
+}
+
+export interface UsdtContract {
+    symbol: string;
+    address: string;
+    decimals: number;
 }

@@ -21,7 +21,10 @@ class Header extends React.Component<HeaderProps> {
                     <div className="flex align-center">
                         <img src="logo192.png" alt="UPAY" className="icon" />
                         <div className="upay-header-title">
-                            UPAY
+                            {
+                                // env
+                                process.env.REACT_APP_NAME
+                            }
                         </div>
                     </div>
                     <I18NMenu callback={

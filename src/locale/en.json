@@ -28,5 +28,8 @@
     "Please transfer the amount to the above address.": "Please transfer the amount to the above address.",
 
     "The payment has been expired or closed.": "The payment has been expired or closed.",
-    "The payment has been completed.": "The payment has been completed."
+    "The payment has been completed.": "The payment has been completed.",
+
+    "Pay with wallet": "Pay with wallet",
+    "Or transfer token directly" : "Or transfer token directly"
 }

@@ -22,7 +22,8 @@
     "Pay with Balance": "Bakiye ile Öde",
     "Failed to pay with balance.": "Bakiye ile ödeme başarısız oldu.",
     "The order does not exist.": "Sipariş mevcut değil.",
-
+    "Pay with wallet": "Cüzdan ile Öde",
+    "Or transfer token directly": "Veya token'ı doğrudan transfer edin",
     "You need to deposit": "Ödeme yapmak için",
     "to your account to complete the payment.": "hesabınıza para yatırmanız gerekiyor.",
     "Please transfer the amount to the above address.": "Lütfen tutarı yukarıdaki adrese transfer edin."
