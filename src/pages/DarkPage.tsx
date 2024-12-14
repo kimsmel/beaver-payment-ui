@@ -566,9 +566,9 @@ class DarkPageComponent extends React.Component<DarkPageProps, DarkPageState> {
                                             amount={this.state.order?.amount || 0}
                                             chainTypes={this.state.chains}
                                             depositAddressMap={this.state.addresses}
-                                            onLoading={() => {
+                                            onLoading={(show) => {
                                                 this.setState({
-                                                    loading: true
+                                                    loading: show
                                                 });
                                             }}
                                             onError={(e) => {

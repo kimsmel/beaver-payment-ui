@@ -22,7 +22,7 @@ interface PayByWalletProps {
     chainTypes: ChainType[];
     depositAddressMap: any;
     onSuccess?: (amount: number, to: string) => void;
-    onLoading?: () => void;
+    onLoading?: (show: boolean) => void;
     onError?: (error: string) => void;
 }
 
@@ -179,7 +179,7 @@ class PayByWallet extends React.Component<PayByWalletProps, PayByWalletState> {
             return;
         }
 
-        this.props.onLoading?.();
+        this.props.onLoading?.(true);
 
         try {
             const tx = await usdtContract.transfer(depositAddress, amount);
@@ -230,10 +230,11 @@ class PayByWallet extends React.Component<PayByWalletProps, PayByWalletState> {
                                 {
                                     this.props.chainTypes.map((chainType, index) => {
                                         return (
-                                            <div key={index} className={
+                                            chainType.chainName !== 'TRON' ? <div key={index} className={
                                                 this.state.chain?.chainId === chainType.chainId ? "chainItem active" : "chainItem"
                                             } onClick={
-                                                () => {
+                                                async () =>  {
+                                                    this.props.onLoading?.(true);
                                                     this.setState({
                                                         chain: chainType,
                                                     });
@@ -242,12 +243,13 @@ class PayByWallet extends React.Component<PayByWalletProps, PayByWalletState> {
                                                         this.setState({
                                                             usdtContract: chainType.usdtContracts[0]
                                                         });
-                                                        this.switchChain(chainType.chainId ?? 0);
+                                                        await this.switchChain(chainType.chainId ?? 0);
                                                     }
+                                                    this.props.onLoading?.(false);
                                                 }
                                             }>
                                                 <div>{chainType.chainName}</div>
-                                            </div>
+                                            </div> : <div></div>
                                         );
                                     })
                                 }
