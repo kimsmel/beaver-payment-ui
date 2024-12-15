@@ -555,11 +555,6 @@ class DarkPageComponent extends React.Component<DarkPageProps, DarkPageState> {
 
                                 {this.state.balance === 0
                                     || this.state.balance < (this.state.order?.amount || 0) ? <div className="upay-body-right">
-                                    {!this.state.success && !this.state.disabled ? <div className="color-red text-center text-sm margin-top">
-                                        {t('You need to deposit')} {
-                                            this.state.order ? this.state.order.amount - this.state.balance : 'Loading...'
-                                        } USD {t('to your account to complete the payment.')}
-                                    </div> : null}
                                     {window.ethereum ? <div>
                                         {this.state.chains && this.state.chains.length > 0 ?
                                          <PayByWallet title={t('Pay with wallet')} 
