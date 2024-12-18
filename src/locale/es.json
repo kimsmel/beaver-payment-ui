@@ -19,7 +19,6 @@
     "No balance available.": "No hay saldo disponible.",
     "No chain available.": "No hay cadena disponible.",
     "No wallet available.": "No hay billetera disponible.",
-    "Pay with Balance": "Pagar con Saldo",
     "Failed to pay with balance.": "Error al pagar con saldo.",
     "The order does not exist.": "El pedido no existe.",
     "You need to deposit": "Necesita depositar",
@@ -27,6 +26,7 @@
     "Please transfer the amount to the above address.": "Por favor transfiera la cantidad a la dirección anterior.",
     "The payment has been expired or closed.": "El pago ha expirado o se ha cerrado.",
     "The payment has been completed.": "El pago se ha completado.",
-    "Pay with wallet": "Pagar con billetera",
-    "Or transfer token directly" : "O transferir token directamente"
+    "Or transfer token directly" : "O transferir token directamente",
+    "Pay with Balance": "Pagar con Saldo",
+    "Pay with wallet": "Conectar para pagar"
 }

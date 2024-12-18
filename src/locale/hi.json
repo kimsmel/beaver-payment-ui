@@ -19,12 +19,14 @@
     "No balance available.": "कोई शेष राशि उपलब्ध नहीं है।",
     "No chain available.": "कोई चेन उपलब्ध नहीं है।",
     "No wallet available.": "कोई वॉलेट उपलब्ध नहीं है।",
-    "Pay with Balance": "शेष राशि से भुगतान करें",
     "Failed to pay with balance.": "शेष राशि से भुगतान करने में विफल।",
     "The order does not exist.": "ऑर्डर मौजूद नहीं है।",
     "You need to deposit": "आपको जमा करने की आवश्यकता है",
     "to your account to complete the payment.": "भुगतान पूरा करने के लिए अपने खाते में।",
     "Please transfer the amount to the above address.": "कृपया राशि को ऊपर दिए गए पते पर स्थानांतरित करें।",
-    "Pay with wallet": "वॉलेट से भुगतान करें",
-    "Or transfer token directly": "या सीधे टोकन स्थानांतरित करें"
+    "Or transfer token directly": "या सीधे टोकन स्थानांतरित करें",
+    "Pay with Balance": "शेष राशि से भुगतान करें",
+    "The payment has been expired or closed.": "भुगतान की समय सीमा समाप्त हो गई है या बंद कर दिया गया है।",
+    "The payment has been completed.": "भुगतान पूरा हो गया है।",
+    "Pay with wallet": "चेकआउट से कनेक्ट करें"
 }

@@ -19,12 +19,14 @@
   "No balance available.": "利用可能な残高がありません。",
   "No chain available.": "利用可能なチェーンがありません。",
   "No wallet available.": "利用可能なウォレットがありません。",
-  "Pay with Balance": "残高で支払う",
   "Failed to pay with balance.": "残高での支払いに失敗しました。",
   "The order does not exist.": "注文が存在しません。",
   "You need to deposit": "あなたは入金する必要があります",
   "to your account to complete the payment.": "支払いを完了するためにアカウントに。",
   "Please transfer the amount to the above address.": "上記のアドレスに金額を送金してください。",
-  "Pay with wallet": "ウォレットで支払う",
-  "Or transfer token directly": "またはトークンを直接転送する"
+  "Or transfer token directly": "またはトークンを直接転送する",
+  "Pay with Balance": "残高で支払う",
+  "The payment has been expired or closed.": "支払いは期限切れまたは終了しました。",
+  "The payment has been completed.": "支払いが完了しました。",
+  "Pay with wallet": "ウォレットで支払う"
 }

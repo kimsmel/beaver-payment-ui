@@ -9,6 +9,9 @@ import { ChainType, UsdtContract } from '../../models/ChainType';
 import { BrowserProvider, ethers } from 'ethers';
 import Divider from '../Divider/Divider';
 
+import TPIcon from '../../assets/icons/tp.png';
+import OKXIcon from '../../assets/icons/okx.svg';
+
 declare global {
     interface Window {
         ethereum: any;
@@ -74,7 +77,7 @@ class PayByWallet extends React.Component<PayByWalletProps, PayByWalletState> {
                         usdtContract: chain.usdtContracts[0]
                     });
                 }
-            } );
+            });
         }
     }
 
@@ -88,6 +91,9 @@ class PayByWallet extends React.Component<PayByWalletProps, PayByWalletState> {
 
     doConnect = async () => {
         try {
+            this.setState({
+                error: undefined
+            })
             if (!window.ethereum) {
                 this.setState({
                     error: "Please install Metamask first."
@@ -146,7 +152,7 @@ class PayByWallet extends React.Component<PayByWalletProps, PayByWalletState> {
             method: 'wallet_switchEthereumChain',
             params: [
                 {
-                    chainId: '0x'+ chainId.toString(16)
+                    chainId: '0x' + chainId.toString(16)
                 }
             ],
 
@@ -233,10 +239,11 @@ class PayByWallet extends React.Component<PayByWalletProps, PayByWalletState> {
                                             chainType.chainName !== 'TRON' ? <div key={index} className={
                                                 this.state.chain?.chainId === chainType.chainId ? "chainItem active" : "chainItem"
                                             } onClick={
-                                                async () =>  {
+                                                async () => {
                                                     this.props.onLoading?.(true);
                                                     this.setState({
                                                         chain: chainType,
+                                                        error: undefined
                                                     });
                                                     // is chain id changed ?
                                                     if (chainType.chainId !== this.state.chain?.chainId) {
@@ -249,7 +256,7 @@ class PayByWallet extends React.Component<PayByWalletProps, PayByWalletState> {
                                                 }
                                             }>
                                                 <div>{chainType.chainName}</div>
-                                            </div> : <div></div>
+                                            </div> : <div key={index} ></div>
                                         );
                                     })
                                 }
@@ -283,8 +290,18 @@ class PayByWallet extends React.Component<PayByWalletProps, PayByWalletState> {
                             <div className="walletItem flex" onClick={() => {
                                 this.doConnect();
                             }}>
-                                <div>Metamask</div>
-                                <img src="https://metamask.io/assets/icon.svg" alt="Metamask" />
+                                <div>
+                                    Checkout
+                                </div>
+                                <div style={{
+                                    display: 'flex',
+                                    gap: '0.2rem'
+                                }}>
+                                    <img src="https://metamask.io/assets/icon.svg" alt="Metamask" />
+                                    {/* tpicon */}
+                                    <img src={TPIcon} alt="tp" />
+                                    <img src={OKXIcon} alt="okx" />
+                                </div>
                             </div>
                         </div>
                     </Modal.Body>

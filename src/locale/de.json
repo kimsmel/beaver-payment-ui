@@ -15,18 +15,18 @@
     "click here": "hier klicken",
     "Scan the QR code to deposit": "Scannen Sie den QR-Code, um einzuzahlen",
     "With balance": "Basierend auf Ihren vorherigen Zahlungsaufzeichnungen hat Ihr Konto genügend Guthaben für diese Zahlung, sodass Sie das Konto nicht erneut aufladen müssen, um die Zahlung abzuschließen. Wenn Sie mit der Zahlung für diese Bestellung fortfahren möchten, klicken Sie bitte auf die Schaltfläche \"Mit Guthaben bezahlen\" auf der linken Seite.",
+    "Pay with Balance": "Mit Guthaben bezahlen",
     "The order has been closed.": "Die Bestellung wurde geschlossen.",
     "No balance available.": "Kein Guthaben verfügbar.",
     "No chain available.": "Keine Kette verfügbar.",
     "No wallet available.": "Keine Brieftasche verfügbar.",
-    "Pay with Balance": "Mit Guthaben bezahlen",
     "Failed to pay with balance.": "Bezahlung mit Guthaben fehlgeschlagen.",
     "The order does not exist.": "Die Bestellung existiert nicht.",
-    "Pay with wallet": "Mit Brieftasche bezahlen",
     "Or transfer token directly": "Oder Token direkt übertragen",
     "You need to deposit": "Sie müssen einzahlen",
     "to your account to complete the payment.": "auf Ihr Konto, um die Zahlung abzuschließen.",
     "Please transfer the amount to the above address.": "Bitte überweisen Sie den Betrag an die oben angegebene Adresse.",
     "The payment has been expired or closed.": "Die Zahlung ist abgelaufen oder wurde geschlossen.",
-    "The payment has been completed.": "Die Zahlung wurde abgeschlossen."
+    "The payment has been completed.": "Die Zahlung wurde abgeschlossen.",
+    "Pay with wallet": "Zum Bezahlen verbinden"
 }

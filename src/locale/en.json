@@ -19,7 +19,7 @@
     "No balance available.": "No balance available.",
     "No chain available.": "No chain available.",
     "No wallet available.": "No wallet available.",
-    "Pay with Balance": "Pay with Balance",
+    "Pay with Balance": "Checkout using Balance",
     "Failed to pay with balance.": "Failed to pay with balance.",
     "The order does not exist.": "The order does not exist.",
 
@@ -30,6 +30,6 @@
     "The payment has been expired or closed.": "The payment has been expired or closed.",
     "The payment has been completed.": "The payment has been completed.",
 
-    "Pay with wallet": "Pay with wallet",
+    "Pay with wallet": "Connect to checkout",
     "Or transfer token directly" : "Or transfer token directly"
 }

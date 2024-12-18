@@ -22,6 +22,8 @@
     "Pay with Balance": "Bayar dengan Saldo",
     "Failed to pay with balance.": "Gagal membayar dengan saldo.",
     "The order does not exist.": "Pesanan tidak ada.",
+    "The payment has been expired or closed.": "Pembayaran telah kedaluwarsa atau ditutup.",
+    "The payment has been completed.": "Pembayaran telah selesai.",
     "You need to deposit": "Anda perlu deposit",
     "to your account to complete the payment.": "ke akun Anda untuk menyelesaikan pembayaran.",
     "Please transfer the amount to the above address.": "Silakan transfer jumlah tersebut ke alamat di atas.",

@@ -25,6 +25,8 @@
     "You need to deposit": "입금해야 할 금액:",
     "to your account to complete the payment.": "결제를 완료하려면 계정으로 입금해 주세요.",
     "Please transfer the amount to the above address.": "위의 주소로 해당 금액을 송금해 주세요.",
+    "The payment has been expired or closed.": "결제가 만료되었거나 종료되었습니다.",
+    "The payment has been completed.": "결제가 완료되었습니다.",
     "Pay with wallet": "지갑으로 결제",
     "Or transfer token directly": "또는 토큰을 직접 전송"
 }

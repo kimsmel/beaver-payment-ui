@@ -25,6 +25,8 @@
     "You need to deposit": "Devi depositare",
     "to your account to complete the payment.": "sul tuo account per completare il pagamento.",
     "Please transfer the amount to the above address.": "Per favore trasferisci l'importo all'indirizzo sopra indicato.",
+    "The payment has been expired or closed.": "Il pagamento è scaduto o è stato chiuso.",
+    "The payment has been completed.": "Il pagamento è stato completato.",
     "Pay with wallet": "Paga con portafoglio",
     "Or transfer token directly": "Oppure trasferisci il token direttamente"
 }

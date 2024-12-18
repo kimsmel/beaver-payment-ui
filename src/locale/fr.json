@@ -19,7 +19,6 @@
     "No balance available.": "Aucun solde disponible.",
     "No chain available.": "Aucune chaîne disponible.",
     "No wallet available.": "Aucun portefeuille disponible.",
-    "Pay with Balance": "Payer avec le solde",
     "Failed to pay with balance.": "Échec du paiement avec le solde.",
     "The order does not exist.": "La commande n'existe pas.",
     "You need to deposit": "Vous devez déposer",
@@ -27,6 +26,9 @@
     "Please transfer the amount to the above address.": "Veuillez transférer le montant à l'adresse ci-dessus.",
     "The payment has been expired or closed.": "Le paiement a expiré ou a été fermé.",
     "The payment has been completed.": "Le paiement a été effectué.",
-    "Pay with wallet": "Payer avec le portefeuille",
-    "Or transfer token directly" : "Ou transférer le jeton directement"
+    "Or transfer token directly" : "Ou transférer le jeton directement",
+    "Payer avec le solde": "Payer avec le solde",
+    "Le paiement a expiré ou a été fermé.": "Le paiement a expiré ou a été fermé.",
+    "Le paiement a été effectué.": "Le paiement a été effectué.",
+    "Connectez-vous pour payer": "Connectez-vous pour payer"
 }
