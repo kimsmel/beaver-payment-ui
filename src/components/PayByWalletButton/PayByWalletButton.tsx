@@ -204,7 +204,7 @@ class PayByWallet extends React.Component<PayByWalletProps, PayByWalletState> {
         const { error } = this.state;
         return (
             <div className='d-grid gap-2'>
-                {window.ethereum ? <Button variant="success" size="lg" className='pay-button' onClick={
+                {window.ethereum ? <Button variant="primary" size="lg"  onClick={
                     () => {
                         this.setState({
                             show: true

@@ -601,7 +601,7 @@ class DarkPageComponent extends React.Component<DarkPageProps, DarkPageState> {
                                         </Form.Text>
                                     </div>
                                     <div className="margin-top">
-                                        <Alert variant="info" className="align-center flex justify-between word-break text-sm">
+                                        <Alert variant="secondary" className="align-center flex justify-between word-break text-sm">
                                             <div> {
                                                 this.state.addresses && this.state.chains.length > 0 ? this.state.addresses[this.state.chains[this.state.currentChain].chainType] : 'Loading...'
                                             }</div>
