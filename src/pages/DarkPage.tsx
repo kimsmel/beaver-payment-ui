@@ -479,7 +479,12 @@ class DarkPageComponent extends React.Component<DarkPageProps, DarkPageState> {
                                     flexDirection: 'column',
                                     justifyContent: 'space-between',
                                 }}>
-                                    <div>
+                                    <div style={{
+                                        height: '100%',
+                                        display: 'flex',
+                                        flexDirection: 'column',
+                                        justifyContent: 'center',
+                                    }}>
                                         <div className="count-down-text text-center" style={{
                                             marginTop: '1rem',
                                             marginBottom: '1rem'
