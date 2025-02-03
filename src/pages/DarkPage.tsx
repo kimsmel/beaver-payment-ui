@@ -616,11 +616,13 @@ class DarkPageComponent extends React.Component<DarkPageProps, DarkPageState> {
                                                 return <option key={index} value={index}>{chain.chainName}</option>
                                             })}
                                         </Form.Select>
-                                        <Form.Text className="text-muted text-sm">
+                                        <div className="text-muted text-sm margin-top" style={{
+                                            lineHeight: 1.5
+                                        }}>
                                             {this.state.chains.length > 0 ? this.state.chains[this.state.currentChain].descriptionMap[
                                                 this.props.i18n.language
                                             ] : 'Loading...'}
-                                        </Form.Text>
+                                        </div>
                                     </div>
                                     <div className="margin-top">
                                         <Alert variant="secondary" className="align-center flex justify-between word-break text-sm flex-wrap">
