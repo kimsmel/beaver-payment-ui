@@ -474,82 +474,99 @@ class DarkPageComponent extends React.Component<DarkPageProps, DarkPageState> {
                         <div className="upay-container">
                             <div className="upay-body">
 
-                                <div className="upay-body-left">
-                                    {this.state.order && this.state.order.logo ? <div className="upay-item-image">
-                                        <img alt="" src={
-                                            this.state.order ? this.state.order.logo : ''
-                                        } />
-                                    </div> : null}
-                                    <div className="main-price text-center" style={{
-                                        lineHeight: 1,
-                                        marginTop: '1rem'
-                                    }}>
-                                       {
-                                            this.state.order ? this.state.order.amount : 'Loading...'
-                                        } USD
-                                    </div>
-                                    <div className="count-down-text text-center">
-                                        {this.state.timeRemains}
-                                    </div>
-                                    <div style={{
-                                        height: '1rem'
-                                    }}></div>
+                                <div className="upay-body-left" style={{
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    justifyContent: 'space-between',
+                                }}>
                                     <div>
-                                        <div className="upay-info-item flex justify-between">
-                                            <div>ID</div>
-                                            <div># {
-                                                this.state.order ? this.state.order.id : 'Loading...'
-                                            }</div>
-                                        </div>
-                                        <div className="upay-info-item flex justify-between">
-                                            <div>{t('Order ID')}</div>
-                                            <div># {
-                                                this.state.order ? this.state.order.oid : 'Loading...'
-                                            }</div>
-                                        </div>
-                                        <div className="upay-info-item flex justify-between">
-                                            <div>{t('Memo')}</div>
-                                            <div>
-                                                {this.state.order ? this.state.order.memo : 'Loading...'}
-                                            </div>
+                                        <div className="count-down-text text-center" style={{
+                                            marginTop: '1rem',
+                                            marginBottom: '1rem'
+                                        }}>
+                                            {this.state.timeRemains}
                                         </div>
 
-                                    </div>
-                                    {/* amount */}
-                                    <div>
-                                        <hr />
-                                        <div className="upay-info-item  flex justify-between">
-                                            <div className="upay-info-item-label">{t('Amount')}</div>
-                                            <div className="price bold ">
-                                            ₮ {
-                                                    this.state.order ? this.state.order.amount : 'Loading...'
-                                                } 
-                                            </div>
-                                        </div>
-                                    </div>
-                                    {/* balance remain */}
-                                    <div>
-                                        <div className="upay-info-item  flex justify-between">
-                                            <div className="upay-info-item-label">{t('Balance')}</div>
-                                            <div className="text-grey">
-                                            ₮ {this.state.balance} 
-                                            </div>
-                                        </div>
-                                    </div>
-                                    {/* pay button */}
-                                    {!(this.state.disabled
-                                        || this.state.balance === 0
-                                        || this.state.balance < (this.state.order?.amount || 0)) ? <div className="text-right d-grid gap-2">
-                                        <Button variant="primary"
-                                            onClick={() => {
-                                                this._doPayWithBalance();
+                                        <div className="main-price text-center" style={{
+                                            lineHeight: 1,
+                                        }}>
+                                            ${
+                                                this.state.order ? this.state.order.amount : 'Loading...'
                                             }
-                                            } className="pay-button margin"
-                                            size="lg"
-                                        >
-                                            {t('Pay with Balance')}
-                                        </Button>
-                                    </div> : null}
+                                        </div>
+                                        <div style={{
+                                            marginTop: '2rem'
+                                        }}>
+                                        </div>
+
+                                        {this.state.order && this.state.order.logo ? <div className="upay-item-image">
+                                            <img alt="" src={
+                                                this.state.order ? this.state.order.logo : ''
+                                            } />
+                                        </div> : null}
+                                        <div style={{
+                                            height: '2rem'
+                                        }}></div>
+                                    </div>
+                                    <div>
+                                        <Divider title="ORDER"/>
+                                        <div>
+                                            <div className="upay-info-item flex justify-between">
+                                                <div>ID</div>
+                                                <div># {
+                                                    this.state.order ? this.state.order.id : 'Loading...'
+                                                }</div>
+                                            </div>
+                                            <div className="upay-info-item flex justify-between">
+                                                <div>{t('Order ID')}</div>
+                                                <div># {
+                                                    this.state.order ? this.state.order.oid : 'Loading...'
+                                                }</div>
+                                            </div>
+                                            <div className="upay-info-item flex justify-between">
+                                                <div>{t('Memo')}</div>
+                                                <div>
+                                                    {this.state.order ? this.state.order.memo : 'Loading...'}
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        {/* amount */}
+                                        <div>
+                                            <hr />
+                                            <div className="upay-info-item  flex justify-between">
+                                                <div className="upay-info-item-label">{t('Amount')}</div>
+                                                <div className="price bold ">
+                                                    ₮ {
+                                                        this.state.order ? this.state.order.amount : 'Loading...'
+                                                    }
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {/* balance remain */}
+                                        <div>
+                                            <div className="upay-info-item  flex justify-between">
+                                                <div className="upay-info-item-label">{t('Balance')}</div>
+                                                <div className="text-grey">
+                                                    ₮ {this.state.balance}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {/* pay button */}
+                                        {!(this.state.disabled
+                                            || this.state.balance === 0
+                                            || this.state.balance < (this.state.order?.amount || 0)) ? <div className="text-right d-grid gap-2">
+                                            <Button variant="primary"
+                                                onClick={() => {
+                                                    this._doPayWithBalance();
+                                                }
+                                                } className="pay-button margin"
+                                                size="lg"
+                                            >
+                                                {t('Pay with Balance')}
+                                            </Button>
+                                        </div> : null}
+                                    </div>
                                 </div>
                                 <div className="upay-body-middle"></div>
 
@@ -557,28 +574,28 @@ class DarkPageComponent extends React.Component<DarkPageProps, DarkPageState> {
                                     || this.state.balance < (this.state.order?.amount || 0) ? <div className="upay-body-right">
                                     {window.ethereum ? <div>
                                         {this.state.chains && this.state.chains.length > 0 ?
-                                         <PayByWallet title={t('Pay with wallet')} 
-                                            amount={this.state.order?.amount || 0}
-                                            chainTypes={this.state.chains}
-                                            depositAddressMap={this.state.addresses}
-                                            onLoading={(show) => {
-                                                this.setState({
-                                                    loading: show
-                                                });
-                                            }}
-                                            onError={(e) => {
-                                                this.setState({
-                                                    loading: false,
-                                                });
-                                            }}
-                                            onSuccess={() => {
-                                                this.setState({
-                                                    loading: false,
-                                                });
-                                            }}
-                                        /> : null }
+                                            <PayByWallet title={t('Pay with wallet')}
+                                                amount={this.state.order?.amount || 0}
+                                                chainTypes={this.state.chains}
+                                                depositAddressMap={this.state.addresses}
+                                                onLoading={(show) => {
+                                                    this.setState({
+                                                        loading: show
+                                                    });
+                                                }}
+                                                onError={(e) => {
+                                                    this.setState({
+                                                        loading: false,
+                                                    });
+                                                }}
+                                                onSuccess={() => {
+                                                    this.setState({
+                                                        loading: false,
+                                                    });
+                                                }}
+                                            /> : null}
                                         <Divider title={t('Or transfer token directly')} />
-                                    </div> : null }
+                                    </div> : null}
                                     <div className="upay-info-item-label text-gray">
                                         {t('Select Network')}
                                     </div>
@@ -601,7 +618,7 @@ class DarkPageComponent extends React.Component<DarkPageProps, DarkPageState> {
                                         </Form.Text>
                                     </div>
                                     <div className="margin-top">
-                                        <Alert variant="secondary" className="align-center flex justify-between word-break text-sm">
+                                        <Alert variant="secondary" className="align-center flex justify-between word-break text-sm flex-wrap">
                                             <div> {
                                                 this.state.addresses && this.state.chains.length > 0 ? this.state.addresses[this.state.chains[this.state.currentChain].chainType] : 'Loading...'
                                             }</div>
